@@ -1,10 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-int main(void)
+#include <string.h>
 {
-	size_t n = 0;
-	char *buf = NULL;
+	size_t size = 0;
+	char *input = NULL;
 	ssize_t read;
 	
 	while (1)
@@ -12,12 +11,12 @@ int main(void)
 	printf("$ ");
 	fflush(stdout);
 
-	read = getline(&buf, &n, stdin);
+	read = getline(&input, &size, stdin);
 	if (read != -1)
 	{
-	if (read > 0 && buf[read -1] == '\n')
+	if (read > 0 && input[read -1] == '\n')
 	{
-		buf[read - 1] == '\0';
+		input[read - 1] == '\0';
 	}
 	}
 	else
@@ -25,6 +24,6 @@ int main(void)
 	break;
 	}
 	}
-	free(buf);
+	free(input);
 	return (0);
 }
